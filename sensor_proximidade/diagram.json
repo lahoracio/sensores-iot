@@ -1,0 +1,45 @@
+{
+    "version": 1,
+    "author": "Lara Machado",
+    "editor": "wokwi",
+    "parts": [
+      { "type": "wokwi-breadboard-half", "id": "bb1", "top": 64.2, "left": -102.8, "attrs": {} },
+      {
+        "type": "board-esp32-devkit-c-v4",
+        "id": "esp",
+        "top": 0,
+        "left": -235.16,
+        "attrs": { "env": "micropython-20231227-v1.22.0" }
+      },
+      {
+        "type": "wokwi-led",
+        "id": "led1",
+        "top": -22.8,
+        "left": -53.8,
+        "attrs": { "color": "red" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "r1",
+        "top": 158.4,
+        "left": -29.35,
+        "rotate": 90,
+        "attrs": { "value": "1000" }
+      },
+      { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": 289.5, "left": -167.3, "attrs": {} }
+    ],
+    "connections": [
+      [ "esp:TX", "$serialMonitor:RX", "", [] ],
+      [ "esp:RX", "$serialMonitor:TX", "", [] ],
+      [ "bb1:tn.1", "esp:GND.2", "black", [ "v0" ] ],
+      [ "led1:C", "bb1:9t.a", "red", [ "v0" ] ],
+      [ "led1:A", "bb1:tn.5", "black", [ "v0" ] ],
+      [ "r1:1", "bb1:9t.c", "", [ "$bb" ] ],
+      [ "r1:2", "bb1:9b.g", "", [ "$bb" ] ],
+      [ "esp:26", "bb1:9b.j", "red", [ "h-28.65", "v-144", "h134.4", "v249.6", "h9.6" ] ],
+      [ "esp:27", "ultrasonic1:ECHO", "gold", [ "h-19.05", "v278.4", "h172.8", "v9.6" ] ],
+      [ "esp:5V", "ultrasonic1:VCC", "red", [ "h0.15", "v192", "h134.4" ] ],
+      [ "esp:25", "ultrasonic1:TRIG", "green", [ "v0", "h-28.65", "v307.2", "h172.8" ] ]
+    ],
+    "dependencies": {}
+  }
